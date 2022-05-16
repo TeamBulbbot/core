@@ -2,13 +2,34 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 // https://gist.github.com/devsnek/77275f6e3f810a9545440931ed314dc1
 
-function hex2bin(hex: string) {
-	const buf = new Uint8Array(Math.ceil(hex.length / 2));
-	for (let i = 0; i < buf.length; i++) {
-		buf[i] = parseInt(hex.substr(i * 2, 2), 16);
-	}
-	return buf;
+const hexLookup = {
+	0: 0x0,
+	1: 0x1,
+	2: 0x2,
+	3: 0x3,
+	4: 0x4,
+	5: 0x5,
+	6: 0x6,
+	7: 0x7,
+	8: 0x8,
+	9: 0x9,
+	A: 0xa,
+	B: 0xb,
+	C: 0xc,
+	D: 0xd,
+	E: 0xe,
+	F: 0xf,
+
+	// Lowercase
+	a: 0xa,
+	b: 0xb,
+	c: 0xc,
+	d: 0xd,
+	e: 0xe,
+	f: 0xf,
 }
+
+const hex2bin = (hex: string) => Uint8Array.from(hex, (character) => hexLookup[character])
 
 const PUBLIC_KEY = crypto.subtle.importKey(
 	"raw",
