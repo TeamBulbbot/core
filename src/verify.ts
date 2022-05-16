@@ -27,9 +27,9 @@ const hexLookup = {
 	d: 0xd,
 	e: 0xe,
 	f: 0xf,
-}
+};
 
-const hex2bin = (hex: string) => Uint8Array.from(hex, (character) => hexLookup[character])
+const hex2bin = (hex: string) => Uint8Array.from(hex, (character) => hexLookup[character]);
 
 const PUBLIC_KEY = crypto.subtle.importKey(
 	"raw",
